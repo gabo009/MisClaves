@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mis Claves</string>
+    <string name="et_rut">Rut</string>
+    <string name="et_contrasena">Contraseña</string>
+    <string name="tv_usuarios">Usuarios</string>
+    <string name="tv_clave">Clave</string>
+    <string name="btn_ingresar">Ingresar</string>
+</resources>
