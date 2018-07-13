@@ -32,16 +32,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferences pref = getSharedPreferences("DatosUsuario", Context.MODE_PRIVATE);
-                if (!pref.getString(et_Rut.getText().toString(), "@").equals("@")){
-                    if (pref.getString(et_Rut.getText().toString(), "").equals(et_Clave.getText().toString())){
-                        Intent intent = new Intent(MainActivity.this, ViewActivity.class);
-                        intent.putExtra("usuario", et_Rut.getText().toString());
-                        startActivity(intent);
-                    }else{
-                        et_Clave.setError("Contraseña incorrecta");
+                if (et_Rut.getText().toString().indexOf(".") != -1 || et_Rut.getText().toString().indexOf("-") != -1){
+                    if (!pref.getString(et_Rut.getText().toString(), "@").equals("@")) {
+                        if (pref.getString(et_Rut.getText().toString(), "").equals(et_Clave.getText().toString())) {
+                            Intent intent = new Intent(MainActivity.this, ViewActivity.class);
+                            intent.putExtra("usuario", et_Rut.getText().toString());
+                            startActivity(intent);
+                        } else {
+                            et_Clave.setError("Contraseña incorrecta");
+                        }
+                    } else {
+                        guardarUsuario();
                     }
-                }else{
-                    guardarUsuario();
+                } else {
+                    et_Rut.setError("El rut no debe contener . ni -");
                 }
             }
         });

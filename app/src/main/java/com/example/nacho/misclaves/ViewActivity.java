@@ -55,7 +55,9 @@ public class ViewActivity extends AppCompatActivity {
             c.setObservacion(bundle.get("comentario").toString());
             grabarArchivo(nombrearchivo);
         } else if (bundle.containsKey("nombre")) {
-            cuentas.add(new Cuentas(bundle.get("nombre").toString(), bundle.get("user").toString(), bundle.get("url").toString(), bundle.get("contrasena").toString(), bundle.get("comentario").toString()));
+            Cuentas c = new Cuentas(bundle.get("nombre").toString(), bundle.get("user").toString(), bundle.get("url").toString(), "", bundle.get("comentario").toString());
+            c.setClave(bundle.get("contrasena").toString());
+            cuentas.add(c);
             grabarArchivo(nombrearchivo);
         }
 
